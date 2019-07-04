@@ -33,8 +33,9 @@ const styles = {
 };
 
 function MiniPalette(props) {
+  //classes is coming from material ui's w/styles as prop
   const { classes, paletteName, emoji } = props;
-  // console.log(classes);
+  console.log(props);
 
   return (
     <div className={classes.root}>
