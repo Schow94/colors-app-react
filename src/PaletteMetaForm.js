@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -11,7 +10,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
 
-class PaletteMetaForm extends React.Component {
+class PaletteMetaForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,7 +49,7 @@ class PaletteMetaForm extends React.Component {
   }
 
   savePalette(emoji) {
-    // console.log(emoji.native);
+    // console.log(this.state);
     const newPalette = {
       paletteName: this.state.newPaletteName,
       emoji: emoji.native
