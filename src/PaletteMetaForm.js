@@ -8,6 +8,9 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
+import { Picker } from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css';
+
 class PaletteMetaForm extends React.Component {
   constructor(props) {
     super(props);
@@ -41,21 +44,22 @@ class PaletteMetaForm extends React.Component {
   };
 
   render() {
-    const { handleSubmit, palettes } = this.props;
+    const { handleSubmit, palettes, hideForm } = this.props;
     const { newPaletteName } = this.state;
     return (
       <Dialog
         open={this.state.open}
-        onClose={this.handleClose}
+        onClose={hideForm}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
         <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
           <DialogContent>
             <DialogContentText>
               To subscribe to this website, please enter your email address
               here. We will send updates occasionally.
             </DialogContentText>
+            <Picker />
             <TextValidator
               value={newPaletteName}
               name="newPaletteName"
@@ -71,7 +75,7 @@ class PaletteMetaForm extends React.Component {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={hideForm} color="primary">
               Cancel
             </Button>
             <Button variant="contained" color="primary" type="submit">
